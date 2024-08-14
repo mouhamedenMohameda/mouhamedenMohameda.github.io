@@ -22,8 +22,13 @@
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
         nav a {
-            margin: 0 20px;
+            margin: 0 10px;
             color: #fff;
             text-decoration: none;
             font-weight: bold;
@@ -32,6 +37,14 @@
         }
         nav a:hover {
             color: #ffe0b2;
+        }
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
         }
         section {
             margin: 40px 20px;
@@ -75,13 +88,29 @@
             box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
             margin-top: auto;
         }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                display: none;
+            }
+            nav.show {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>My Portfolio</h1>
-        <nav>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav id="nav-menu">
             <a href="#about">About Me</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
@@ -99,15 +128,14 @@
     <section id="projects">
         <h2>Projects</h2>
         <p>Here are some of the significant projects I've worked on:</p>
-       <ul>
-<li><strong>My Compta (Innovation Project, 2020-2021):</strong> An e-commerce application developed as a school project with a group of students. The app allows users to add products to a store and manage sales operations. I used Flutter for the frontend and Django for the backend. We successfully developed an Android app, and there were plans to also develop an iOS application.</li>
-    <li><strong>MinDataHub (Ministry of Digital Transition, 2021):</strong> Assisted in developing a data collection application for ministry reports, handling both frontend and backend development with Angular and Spring Boot.</li>
-    <li><strong>E-Banking Application (GTI, 2022):</strong> Participated in developing an e-banking application, managing CRUD operations for user accounts, and conducting backend unit testing with Spring Boot and Angular.</li>
-    <li><strong>E-Commerce Application (Polytch Tours, 2022-2023):</strong> Contributed to the development of an e-commerce application, involving UML design, endpoint creation, and authentication management with Spring Boot and Angular.</li>
-    <li><strong>AI Tools Benchmarking (Alteca-Groupe SEB, 2024):</strong> Evaluated AI tools to support developers, migrated a Spring Boot application from Java 8 to Java 11, and conducted unit testing and security analysis using GitHub, JUnit, Copilot, and Codeium AI.</li>
-    <li><strong>My Pocket (Personal Project, 2024):</strong> An e-commerce application developed using Flutter and Firebase for managing operations in small shops and boutiques. It handles expenses, incomes, and debts. Initially developed for a client, I later added more functionalities and made it available to new clients through a monthly subscription model.</li>
-</ul>
-
+        <ul>
+            <li><strong>My Compta (Innovation Project, 2020-2021):</strong> An e-commerce application developed as a school project with a group of students. The app allows users to add products to a store and manage sales operations. I used Flutter for the frontend and Django for the backend. We successfully developed an Android app, and there were plans to also develop an iOS application.</li>
+            <li><strong>MinDataHub (Ministry of Digital Transition, 2021):</strong> Assisted in developing a data collection application for ministry reports, handling both frontend and backend development with Angular and Spring Boot.</li>
+            <li><strong>E-Banking Application (GTI, 2022):</strong> Participated in developing an e-banking application, managing CRUD operations for user accounts, and conducting backend unit testing with Spring Boot and Angular.</li>
+            <li><strong>E-Commerce Application (Polytch Tours, 2022-2023):</strong> Contributed to the development of an e-commerce application, involving UML design, endpoint creation, and authentication management with Spring Boot and Angular.</li>
+            <li><strong>AI Tools Benchmarking (Alteca-Groupe SEB, 2024):</strong> Evaluated AI tools to support developers, migrated a Spring Boot application from Java 8 to Java 11, and conducted unit testing and security analysis using GitHub, JUnit, Copilot, and Codeium AI.</li>
+            <li><strong>My Pocket (Personal Project, 2024):</strong> An e-commerce application developed using Flutter and Firebase for managing operations in small shops and boutiques. It handles expenses, incomes, and debts. Initially developed for a client, I later added more functionalities and made it available to new clients through a monthly subscription model.</li>
+        </ul>
     </section>
 
     <section id="skills">
@@ -147,6 +175,17 @@
     <footer>
         <p>&copy; 2024 My Portfolio. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('nav-menu');
+            if (menu.classList.contains('show')) {
+                menu.classList.remove('show');
+            } else {
+                menu.classList.add('show');
+            }
+        }
+    </script>
 
 </body>
 </html>
